@@ -24,24 +24,29 @@ To ensure meaningful clustering and avoid skewness effects, the following featur
 **1) Log Enrollment:** Enrollment distribution was heavily skewed.
 To stabilize variance:
 
-**X1​=log(1+Ed​)**
-Where: Ed = Total enrollment in district 𝑑
+$$X_1 = \log(1 + E_d)$$
+Where:
+* $E_d$ = Total enrollment in district $d$
+
 This prevents high-population districts from dominating clustering.
 
-**2) **Update Efficiency****=**X2​=Ud/Ed**
+**2) **Update Efficiency****
+$$X_2 = \frac{U_d}{E_d}$$
 Where:
-Ud = Total biometric updates (Age 5–17)
-Ed = Total enrollment
+* $U_d$ = Total biometric updates (Age 5–17)
+* $E_d$ = Total enrollment
+
 This measures operational effectiveness in converting enrollment into updates.
 
 **3) Pincode-Level Inequality (Coefficient of Variation)**
 To quantify intra-district enrollment concentration:
-CV = σ(Pd,i​)​/μ(Pd,i​)
+$$CV_d = \frac{\sigma(P_{d,i})}{\mu(P_{d,i})}$$
 
 Where:
-Pd,i = Enrollment in pincode i within district d
-σ = Standard deviation
-μ = Mean
+* $P_{d,i}$ = Enrollment in pincode $i$ within district $d$
+* $\sigma$ = Standard deviation
+* $\mu$ = Mean
+
 
 The Coefficient of Variation (CV) was chosen because it is:
 Scale-independent
@@ -64,17 +69,19 @@ Where:
 The objective is to create compact and well-separated clusters.
 
 **Selection of K**
-The optimal number of clusters was selected using : Elbow Method
-WCSS=∑(∣∣x−μ∣∣)^2
+The optimal number of clusters was selected using : 
 
-
+### Elbow Method
+$$WCSS = \sum ||x - \mu||^2$$
 We selected K at the point where additional clusters resulted in diminishing variance reduction.
-Silhouette Score: S= b-a/max(a,b)
+
+### Silhouette Score
+$$S = \frac{b - a}{\max(a, b)}$$
 
 Where:
-a = Intra-cluster distance
-b = Nearest-cluster distance
-K = 4 provided a balance between compactness and separation.
+* $a$ = Intra-cluster distance
+* $b$ = Nearest-cluster distance
+$K = 4$ provided a balance between compactness and separation.
 
 **Key Insights**
 High enrollment does not guarantee high update efficiency.
